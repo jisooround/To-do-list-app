@@ -1,5 +1,3 @@
-// import selectDay from "./selectDay";
-
 export default function renderCalendar(date) {
   const yearEl = date.getFullYear();
   const monthEl = date.getMonth();
@@ -71,7 +69,7 @@ function selectDay() {
   for(let i = 0; i < selectDate.length; i++){
     selectDate[i].addEventListener("click", () => {
       // console 확인
-      // console.log(selectYear, selectMonth, Number(selectDate[i].textContent));
+      console.log(selectYear, selectMonth, Number(selectDate[i].textContent));
       listDateEl.textContent = `${selectYear}.${selectMonth}.${Number(selectDate[i].textContent)}`
       return selectYear, selectMonth, Number(selectDate[i].textContent);
     })
