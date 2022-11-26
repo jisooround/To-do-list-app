@@ -1,0 +1,921 @@
+// color 변수
+$main-color : #CE2424;
+// $main-color : #828282;
+$sub-color : #F5F5F5;
+$point-color : rgb(0, 255, 85);
+
+// font 변수
+$en-font : 'Erica One', 'Black Han Sans', cursive;
+$ko-font : 'Black Han Sans', 'Erica One', cursive;
+
+// scroll
+::selection {
+  background-color: $point-color;
+}
+
+body {
+  height: auto;
+  background-color: $sub-color;
+  display: flex;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  width: 40%;
+  background-color: $main-color;
+  overflow: hidden;
+  .container {
+    .title {
+      display: flex;
+      justify-content: center;
+      h1 {
+        font-size: 100px;
+        font-family: $en-font;
+        color: $sub-color;
+        margin-top: 90px;
+      }
+    }
+    .write {
+      position: relative;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      .todo-input {
+        width: 100%;
+        height : 50px;
+        border-radius: 0;
+        padding-top: 7px;
+        border: none;
+        padding-left: 20px;
+        background-color: $sub-color;
+        color: $main-color;
+        font-size: 23px;
+        font-family: $ko-font;
+        box-sizing: border-box;
+      }
+      .todo-btn {
+        position: absolute;
+        right: 8px;
+        width: 100px;
+        height: 40px;
+        border: none;
+        color: $sub-color;
+        letter-spacing: 1px;
+        font-size: 18px;
+        font-family: $en-font;
+        background-color: $main-color;
+        cursor: pointer;
+      }
+    }
+    .list {
+      width: 530px;
+      height: 500px;
+      margin-top: 10px;
+      box-sizing: border-box;
+      background-color: $sub-color;
+      display: flex;
+      justify-content: center;
+      align-content: flex-start;
+      position: relative;
+      flex-wrap: wrap;
+      .list-date {
+        text-align: center;
+        width: 90%;
+        height: 60px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-size: 55px;
+        font-family: $en-font;
+        color: $main-color;
+        // background-color: aquamarine;
+      }
+      .list-wrap {
+        width: 90%;
+        align-items: flex-start;
+        height: auto;
+        max-height: 320px;
+        padding: 15px;
+        box-sizing: border-box;
+        overflow-x: auto;
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
+        // background-color: aquamarine;
+        .item {
+          width: 100%;
+          height: 40px;
+          border-bottom: 2px solid $main-color;
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          padding-bottom: 10px;
+          .content {
+            padding-top: 13px;
+            display: flex;
+            align-items: center;
+            [type="checkbox"] {
+              // vertical-align: middle;
+              appearance: none;
+              border: max(2px, 0.1em) solid $main-color;
+              border-radius: 50%;
+              width: 1.25em;
+              height: 1.25em;
+              transition: 0.3s ease-in-out;
+            }
+            [type="checkbox"]:checked {
+              // border: 0.6em solid #CE2424
+              background-color: $main-color;
+            }
+            .todo {
+              padding-top: 4px;
+              padding-left: 10px;
+              box-sizing: border-box;
+              font-size: 20px;
+              font-family: $ko-font;
+              color: $main-color;
+            }
+          }
+          .delete-btn {
+            box-sizing: border-box;
+            width: auto;
+            height: 20px;
+            font-family: $en-font;
+            color: $main-color;
+            font-size: 18px;
+            text-align: right;
+            cursor: pointer;
+          }
+        }
+      }
+      .list-btn {
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        button {
+          border: none;
+          background-color: transparent;
+          color: $main-color;
+          font-family: $en-font;
+          font-size: 30px;
+          padding: 0 20px;
+          text-align: center;
+          cursor: pointer;
+        }
+      }
+      .complete {
+        position: absolute;
+        right: 10px;
+        bottom: 20px;
+        p {
+          border: none;
+          background-color: transparent;
+          color: $main-color;
+          font-family: $en-font;
+          font-size: 40px;
+          padding: 0 20px;
+          text-align: center;
+          cursor: pointer;
+        }
+      }
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      button {
+        border: none;
+        background-color: transparent;
+        color: $sub-color;
+        font-family: $en-font;
+        font-size: 75px;
+        text-align: center;
+        padding: 0;
+        cursor: pointer;
+        &:hover {
+          color: $point-color;
+        }
+      }
+    }
+  }
+}
+.calendar {
+  height: 100vh;
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .title {
+    width: 100%;
+    height: 210px;
+    right: 0;
+    background-color: $sub-color;
+    box-shadow:  0 10px 30px 0 $main-color;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    h2 {
+      font-size: 100px;
+      font-family: $en-font;
+      color: $main-color;
+      margin-top: 90px;
+    }
+  }
+  .body {
+    width: 665px;
+    height: calc(100vh - 210px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    .container {
+      margin-top: 90px;
+      margin-bottom: 10px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      .month-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        .prev, .next {
+          width: 40px;
+          height: 40px;
+          border: none;
+          background-color: $main-color;
+          color: $sub-color;
+          font-family: $ko-font;
+          font-size: 16px;
+          cursor: pointer;
+        }
+        .month {
+        margin-top: -15px;
+        text-align: center;
+        width: auto;
+        font-family: $en-font;
+        color: $main-color;
+        font-size: 64px;
+        }
+        .prev {
+          left: 0;
+          background-image: url('../images/Arrow.svg');
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        .next {
+          right: 0;
+          background-image: url('../images/Arrow.svg');
+          background-repeat: no-repeat;
+          background-position: center;
+          transform: scaleX(-1);
+        }
+      }
+      .today {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 30px;
+        padding-bottom: 10px;
+        color: $main-color;
+        font-family: $ko-font;
+        font-size: 17px;
+        width: 100%;
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+        box-sizing: border-box;
+      }
+      .days-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        height: 480px;
+        align-content: flex-start;
+        .days {
+          display: flex;
+          width: 665px;
+          height: 40px;
+          background-color: $main-color;
+          align-items: center;
+          .day {
+            width: 95px;
+            height: 100%;
+            margin-top: 3px;
+            font-family: $ko-font;
+            font-size: 18px;
+            color: $sub-color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+          }
+        }
+        .dates {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          .date {
+            width: 95px;
+            height: 70px;
+            display: flex;
+            padding-top: 12px;
+            justify-content: center;
+            box-sizing: border-box;
+            cursor: pointer;
+            font-family: $ko-font;
+            font-size: 19px;
+            color: $main-color;
+            border-top: 2px solid $main-color;
+            border-right: 2px solid $main-color;
+            user-select: none;
+            &:nth-last-child(-n+7) {
+              border-bottom: 2px solid $main-color;
+            }
+            &:nth-child(-n+7) {
+              border-top: none;
+            }
+            &:nth-child(7n) {
+              border-right: none;
+            }
+          }
+          .today {
+            box-shadow: inset 0 0 20px 5px $point-color; 
+          }
+          .other {
+            color: #c9c9c9;
+          }
+          .this:hover {
+            box-shadow: inset 0 0 20px 5px $point-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    background-color: $sub-color;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: $main-color;
+    overflow: hidden;
+    .container {
+      .write {
+        position: relative;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        #input {
+          width: 100%;
+          height : 50px;
+          border-radius: 0;
+          padding-top: 7px;
+          border: none;
+          padding-left: 20px;
+          background-color: $sub-color;
+          color: $main-color;
+          font-size: 23px;
+          font-family: $ko-font;
+          box-sizing: border-box;
+        }
+        #submit-btn {
+          position: absolute;
+          right: 8px;
+          width: 100px;
+          height: 40px;
+          border: none;
+          color: $sub-color;
+          letter-spacing: 1px;
+          font-size: 18px;
+          font-family: $en-font;
+          background-color: $main-color;
+          cursor: pointer;
+        }
+      }
+      .list {
+        width: 530px;
+        height: 500px;
+        margin-top: 10px;
+        box-sizing: border-box;
+        background-color: $sub-color;
+        display: flex;
+        justify-content: center;
+        align-content: flex-start;
+        position: relative;
+        flex-wrap: wrap;
+        .list-btn {
+          position: absolute;
+          left: 20px;
+          bottom: 20px;
+          button {
+            border: none;
+            background-color: transparent;
+            color: $main-color;
+            font-family: $en-font;
+            font-size: 30px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+          }
+        }
+        .complete {
+          position: absolute;
+          right: 10px;
+          bottom: 20px;
+          p {
+            border: none;
+            background-color: transparent;
+            color: $main-color;
+            font-family: $en-font;
+            font-size: 40px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+          }
+        }
+      }
+      .button {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 100px;
+        button {
+          border: none;
+        }
+      }
+    }
+  }
+  .calendar {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .title {
+      display: none;
+    }
+    .body {
+      .container {
+        margin-top: 120px;
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    height: 100vh;
+    background-color: $sub-color;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: $main-color;
+    overflow: hidden;
+    .container {
+      .title {
+        display: flex;
+        justify-content: center;
+        h1 {
+          font-size: 100px;
+          font-family: $en-font;
+          color: $sub-color;
+          margin-top: 90px;
+        }
+      }
+      .write {
+        position: relative;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        #input {
+          width: 100%;
+          height : 50px;
+          border-radius: 0;
+          padding-top: 7px;
+          border: none;
+          padding-left: 20px;
+          background-color: $sub-color;
+          color: $main-color;
+          font-size: 23px;
+          font-family: $ko-font;
+          box-sizing: border-box;
+        }
+        #submit-btn {
+          position: absolute;
+          right: 8px;
+          width: 100px;
+          height: 40px;
+          border: none;
+          color: $sub-color;
+          letter-spacing: 1px;
+          font-size: 18px;
+          font-family: $en-font;
+          background-color: $main-color;
+          cursor: pointer;
+        }
+      }
+      .list {
+        width: 530px;
+        height: 500px;
+        margin-top: 10px;
+        box-sizing: border-box;
+        background-color: $sub-color;
+        display: flex;
+        justify-content: center;
+        align-content: flex-start;
+        position: relative;
+        flex-wrap: wrap;
+        .list-date {
+          text-align: center;
+          width: 90%;
+          height: 60px;
+          margin-top: 30px;
+          margin-bottom: 20px;
+          font-size: 55px;
+          font-family: $en-font;
+          color: $main-color;
+        }
+        .list-wrap {
+          width: 90%;
+          height: 320px;
+          padding: 15px;
+          box-sizing: border-box;
+          overflow-x: auto;
+          li {
+            padding-top: 13px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid $main-color;
+            padding-bottom: 10px;
+            [type="checkbox"] {
+              appearance: none;
+              border: max(2px, 0.1em) solid $main-color;
+              border-radius: 50%;
+              width: 1.25em;
+              height: 1.25em;
+              transition: 0.3s ease-in-out;
+            }
+            [type="checkbox"]:checked {
+              background-color: $main-color;
+            }
+            p {
+              padding-top: 4px;
+              padding-left: 10px;
+              box-sizing: border-box;
+              font-size: 20px;
+              font-family: $ko-font;
+              color: $main-color;
+            }
+          }
+        }
+        .list-btn {
+          position: absolute;
+          left: 20px;
+          bottom: 20px;
+          button {
+            border: none;
+            background-color: transparent;
+            color: $main-color;
+            font-family: $en-font;
+            font-size: 30px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+          }
+        }
+        .complete {
+          position: absolute;
+          right: 10px;
+          bottom: 20px;
+          p {
+            border: none;
+            background-color: transparent;
+            color: $main-color;
+            font-family: $en-font;
+            font-size: 40px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+          }
+        }
+      }
+      .button {
+        display: flex;
+        justify-content: center;
+        button {
+          border: none;
+          background-color: transparent;
+          color: $sub-color;
+          font-family: $en-font;
+          font-size: 75px;
+          text-align: center;
+          padding: 0;
+          cursor: pointer;
+          &:hover {
+            color: $point-color;
+          }
+        }
+      }
+    }
+  }
+  .calendar {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .title {
+      display: none;
+    }
+    .body {
+      box-shadow:  0 10px 30px 0 $main-color;
+      width: 100%;
+      height: calc(100vh - 210px);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: flex-start;
+      .container {
+        width: 450px;
+        display: flex;
+        flex-wrap: wrap;
+        .days-wrap {
+          width: 100%;
+          .days {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            background-color: $main-color;
+            align-items: center;
+          }
+          .dates {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            .date {
+              width: 14.2857142857%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 390px) {
+  body {
+    height: 100vh;
+    background-color: $sub-color;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: $main-color;
+    overflow: hidden;
+    .container {
+      .title {
+        display: flex;
+        justify-content: center;
+        h1 {
+          font-size: 100px;
+          font-family: $en-font;
+          color: $sub-color;
+          margin-top: 90px;
+        }
+      }
+      .write {
+        position: relative;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        #input {
+          width: 100%;
+          height : 50px;
+          border-radius: 0;
+          padding-top: 7px;
+          border: none;
+          padding-left: 20px;
+          background-color: $sub-color;
+          color: $main-color;
+          font-size: 23px;
+          font-family: $ko-font;
+          box-sizing: border-box;
+        }
+        #submit-btn {
+          position: absolute;
+          right: 8px;
+          width: 100px;
+          height: 40px;
+          border: none;
+          color: $sub-color;
+          letter-spacing: 1px;
+          font-size: 18px;
+          font-family: $en-font;
+          background-color: $main-color;
+          cursor: pointer;
+        }
+      }
+      .list {
+        width: 530px;
+        height: 500px;
+        margin-top: 10px;
+        box-sizing: border-box;
+        background-color: $sub-color;
+        display: flex;
+        justify-content: center;
+        align-content: flex-start;
+        position: relative;
+        flex-wrap: wrap;
+        .list-date {
+          text-align: center;
+          width: 90%;
+          height: 60px;
+          margin-top: 30px;
+          margin-bottom: 20px;
+          font-size: 55px;
+          font-family: $en-font;
+          color: $main-color;
+        }
+        .list-wrap {
+          width: 90%;
+          height: 320px;
+          padding: 15px;
+          box-sizing: border-box;
+          overflow-x: auto;
+          li {
+            padding-top: 13px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid $main-color;
+            padding-bottom: 10px;
+            [type="checkbox"] {
+              appearance: none;
+              border: max(2px, 0.1em) solid $main-color;
+              border-radius: 50%;
+              width: 1.25em;
+              height: 1.25em;
+              transition: 0.3s ease-in-out;
+            }
+            [type="checkbox"]:checked {
+              background-color: $main-color;
+            }
+            p {
+              padding-top: 4px;
+              padding-left: 10px;
+              box-sizing: border-box;
+              font-size: 20px;
+              font-family: $ko-font;
+              color: $main-color;
+            }
+          }
+        }
+        .list-btn {
+          position: absolute;
+          left: 20px;
+          bottom: 20px;
+          button {
+            border: none;
+            background-color: transparent;
+            color: $main-color;
+            font-family: $en-font;
+            font-size: 30px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+          }
+        }
+        .complete {
+          position: absolute;
+          right: 10px;
+          bottom: 20px;
+          p {
+            border: none;
+            background-color: transparent;
+            color: $main-color;
+            font-family: $en-font;
+            font-size: 40px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+          }
+        }
+      }
+      .button {
+        display: flex;
+        justify-content: center;
+        button {
+          border: none;
+          background-color: transparent;
+          color: $sub-color;
+          font-family: $en-font;
+          font-size: 75px;
+          text-align: center;
+          padding: 0;
+          cursor: pointer;
+          &:hover {
+            color: $point-color;
+          }
+        }
+      }
+    }
+  }
+  .calendar {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .body {
+      box-shadow:  0 10px 30px 0 $main-color;
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: flex-start;
+      .container {
+        width: 300px;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        background-color: aqua;
+        .month-wrap {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-content: flex-start;
+          flex-wrap: wrap;
+          .prev, .next {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background-color: $main-color;
+            color: $sub-color;
+            font-family: $ko-font;
+            font-size: 16px;
+            cursor: pointer;
+          }
+          .month {
+          margin-top: -15px;
+          text-align: center;
+          width: auto;
+          font-family: $en-font;
+          color: $main-color;
+          font-size: 64px;
+          }
+          .prev {
+            left: 0;
+            background-image: url('../images/Arrow.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+          .next {
+            right: 0;
+            background-image: url('../images/Arrow.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            transform: scaleX(-1);
+          }
+        }
+        .days-wrap {
+          width: 100%;
+          .days {
+            display: flex;
+            width: 100%;
+            height: 40px;
+            background-color: $main-color;
+            align-items: center;
+          }
+          .dates {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            .date {
+              width: 14.2857142857%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
