@@ -1,6 +1,7 @@
-
-export default async function createTodo(todoEl) {
-  const date = new Date();
+export default async function createTodo(todoEl, adt) {
+  // const date = new Date(jisoo);
+  console.log('createTodo'+adt);
+  // console.log('ㄸㄷ'+date);
   const res = await fetch('https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos', {
     method: 'POST',
     headers: {
@@ -10,7 +11,7 @@ export default async function createTodo(todoEl) {
     },
     body: JSON.stringify({
       title: `${todoEl}`,
-      updatedAt: `${date.getFullYear()}.${date.getMonth()+1}.${date.getDate()}`,
+      order: adt,
     })
   });
   const todos = await res.json();

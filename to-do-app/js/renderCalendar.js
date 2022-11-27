@@ -1,8 +1,10 @@
+import selectDay from "./selectDay.js";
+
 export default function renderCalendar(date) {
   const yearEl = date.getFullYear();
   const monthEl = date.getMonth();
   let selectYear = date.getFullYear();
-  let selectMonth = date.getMonth()+1;
+  let selectMonth = date.getMonth() + 1;
   let selectDate = document.querySelectorAll('.this');
 
   // month 정보
@@ -26,14 +28,14 @@ export default function renderCalendar(date) {
   const nextDates = [];
 
   // 지난 달 날짜 계산
-  if(prevDayEl !== 6){
-    for(let i = 0; i < prevDayEl + 1; i++){
+  if (prevDayEl !== 6) {
+    for (let i = 0; i < prevDayEl + 1; i++) {
       prevDates.unshift(prevDateEl - i);
     }
   }
 
   // 다음 달 날짜 계산
-  for(let i = 1; i < 7 - currentDayEl; i++){
+  for (let i = 1; i < 7 - currentDayEl; i++) {
     nextDates.push(i);
   }
 
@@ -54,26 +56,24 @@ export default function renderCalendar(date) {
 
   // 오늘 날짜 표시
   const today = new Date();
-  if(monthEl === today.getMonth() && yearEl === today.getFullYear()) {
-  for(let date of document.querySelectorAll('.this')) {
-    if(+date.innerText === today.getDate()) {
-      date.classList.add('today');
-      break;
+  if (monthEl === today.getMonth() && yearEl === today.getFullYear()) {
+    for (let date of document.querySelectorAll('.this')) {
+      if (+date.innerText === today.getDate()) {
+        date.classList.add('today');
+        break;
+      }
     }
   }
-}
 
-// date 클릭시 date 반환
-function selectDay() {
-  const listDateEl = document.getElementById("list-date");
-  for(let i = 0; i < selectDate.length; i++){
-    selectDate[i].addEventListener("click", () => {
-      // console 확인
-      console.log(selectYear, selectMonth, Number(selectDate[i].textContent));
-      listDateEl.textContent = `${selectYear}.${selectMonth}.${Number(selectDate[i].textContent)}`
-      return selectYear, selectMonth, Number(selectDate[i].textContent);
+  // date 클릭시 date 반환
+  for (let i = 0; i < selectDate.length; i++) {
+    const select = selectDate[i];
+    select.addEventListener("click", async () => {
+      const selectdate = selectDay(date, select);
+      const data = ([selectYear ,selectMonth, selectdate]);
+      const value = new Date(data);
+      console.log(value);
+      return value;
     })
-  } 
-}
-selectDay();
+  };
 };
