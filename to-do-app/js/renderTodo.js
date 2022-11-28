@@ -1,7 +1,7 @@
 import deleteTodo from "./deleteTodo";
 import getTodo from "./getTodo";
 
-export default function renderTodo(todos, adt, wjs) {
+export default function renderTodo(todos, changeToSix, wjs) {
   const listEl = document.getElementById('list-wrap');
   listEl.innerHTML = '';
   for (let i = 0; i < todos.length; i++) {
@@ -35,7 +35,7 @@ export default function renderTodo(todos, adt, wjs) {
     });
   
     // 표시된 날짜와 같은 날의 목록만 노출
-    if (todos[i].order == adt || todos[i].order == wjs) {
+    if (todos[i].order == changeToSix || todos[i].order == wjs) {
       console.log('같다');
     } else {
       console.log('다르다');

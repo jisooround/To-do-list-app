@@ -25,23 +25,23 @@ buttonEl.addEventListener("click", async (event) => {
     console.log(selectDay);
 
     // 한자리 수 두자리로 만들기
-    const km = selectDay.split('.');
-    console.log(km);
-    if (km[1].length < 2) {
-      km[1] = '0' + km[1];
-      console.log(km);
+    const dateArr = selectDay.split('.');
+    console.log(dateArr);
+    if (dateArr[1].length < 2) {
+      dateArr[1] = '0' + dateArr[1];
+      console.log(dateArr);
     }
-    if (km[2].length < 2) {
-      km[2] = '0' + km[2];
-      console.log(km);
+    if (dateArr[2].length < 2) {
+      dateArr[2] = '0' + dateArr[2];
+      console.log(dateArr);
     }
-    const adt = km.join('');
+    const changeToSix = dateArr.join('');
 
-    console.log(adt);
-    await createTodo(todoEl, adt);
+    console.log(changeToSix);
+    await createTodo(todoEl, changeToSix);
 
     const todos = await getTodo(todoEl);
-    renderTodo(todos, adt);
+    renderTodo(todos, changeToSix);
   }
 });
 
@@ -49,17 +49,17 @@ const selectDay = listDateEl.textContent;
 console.log(selectDay);
 
 // 한자리 수 두자리로 만들기
-const km = selectDay.split('.');
-console.log(km);
-if (km[1].length < 2) {
-  km[1] = '0' + km[1];
-  console.log(km);
+const dateArr = selectDay.split('.');
+console.log(dateArr);
+if (dateArr[1].length < 2) {
+  dateArr[1] = '0' + dateArr[1];
+  console.log(dateArr);
 }
-if (km[2].length < 2) {
-  km[2] = '0' + km[2];
-  console.log(km);
+if (dateArr[2].length < 2) {
+  dateArr[2] = '0' + dateArr[2];
+  console.log(dateArr);
 }
-const adt = km.join('');
+const changeToSix = dateArr.join('');
 
-console.log(adt);
-renderTodo(todos, adt);
+console.log(changeToSix);
+renderTodo(todos, changeToSix);
