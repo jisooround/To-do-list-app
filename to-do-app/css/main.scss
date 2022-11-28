@@ -111,6 +111,9 @@ main {
           align-items: flex-end;
           justify-content: space-between;
           padding-bottom: 10px;
+          &.none {
+            display: none;
+          }
           .content {
             padding-top: 13px;
             display: flex;

@@ -1,6 +1,8 @@
 import selectDay from "./selectDay.js";
+import getTodo from "./getTodo.js";
+import renderTodo from "./renderTodo.js";
 
-export default function renderCalendar(date) {
+export default function renderCalendar(date, adt) {
   const yearEl = date.getFullYear();
   const monthEl = date.getMonth();
   let selectYear = date.getFullYear();
@@ -69,11 +71,30 @@ export default function renderCalendar(date) {
   for (let i = 0; i < selectDate.length; i++) {
     const select = selectDate[i];
     select.addEventListener("click", async () => {
+      // 기존 코드
       const selectdate = selectDay(date, select);
-      const data = ([selectYear ,selectMonth, selectdate]);
-      const value = new Date(data);
-      console.log(value);
-      return value;
+      const data = ([`${selectYear}`, `${selectMonth}`, `${selectdate}`]);
+      console.log(data);
+
+      // 한자리 수 두자리로 만들기
+      if (data[1].length < 2) {
+        data[1] = '0' + data[1];
+        console.log(data);
+      }
+      if (data[2].length < 2) {
+        data[2] = '0' + data[2];
+        console.log(data);
+      }
+      const wjs = data.join('');
+      console.log(wjs);
+
+      const todos = await getTodo();
+      renderTodo(todos, wjs);
+      console.log('날짜 클릭')
+      
+      getTodo(date);
+
+      // return wjs;
     })
   };
 };

@@ -11,17 +11,10 @@ const inputEl = document.getElementById('todo-input');
 const buttonEl = document.getElementById('todo-btn');
 const todoEl = inputEl.value;
 let todos = await getTodo(todoEl);
-// const data = listDateEl.textContent;
-// const adt = data.split('.').join(' ');
 
-renderTodo(todos);
-
+// renderTodo(todos);
 // 최초 날짜 표시
 listDateEl.textContent = `${date.getFullYear()}.${date.getMonth()+1}.${date.getDate()}`;
-
-
-// const todoEl = inputEl.value;
-
 
 // todo 입력
 buttonEl.addEventListener("click", async (event) => {
@@ -30,31 +23,61 @@ buttonEl.addEventListener("click", async (event) => {
   if (todoEl === "") {
     alert('내용을 입력하세요');
   } else {
-    // const data = listDateEl.textContent;
-    // const adt = data.split('.').join(' ');
-    // console.log(adt);
-
     const selectDay = listDateEl.textContent;
-    const adt = selectDay.split('.').join('');
-    // const jisoo = new Date(selectDay);
-    // console.log(jisoo);
+    console.log(selectDay);
+
+    // 한자리 수 두자리로 만들기
+    const km = selectDay.split('.');
+    console.log(km);
+    if (km[1].length < 2) {
+      km[1] = '0' + km[1];
+      console.log(km);
+    }
+    if (km[2].length < 2) {
+      km[2] = '0' + km[2];
+      console.log(km);
+    }
+    const adt = km.join('');
+
     console.log(adt);
     createTodo(todoEl, adt);
-    // renderTodo(todos)
-    // console.log(todoEl);
+
     const todos = await getTodo(todoEl);
-    renderTodo(todos);
+    renderTodo(todos, adt);
   }
 });
 
+const selectDay = listDateEl.textContent;
+console.log(selectDay);
 
+// // 한자리 수 두자리로 만들기
+// const km = selectDay.split('.');
+// console.log(km);
+// if (km[1].length < 2) {
+//   km[1] = '0' + km[1];
+//   console.log(km);
+// }
+// if (km[2].length < 2) {
+//   km[2] = '0' + km[2];
+//   console.log(km);
+// }
+// const adt = km.join('');
 
-// const selectDay = listDateEl.textContent
-// selectDay.addEventListener("change", () => {
-//   const jisoo = new Date(selectDay);
-//   console.log(jisoo);
-// })
+// console.log(adt);
+// renderTodo(todos, adt);
 
-// const selectDay = listDateEl.textContent;
-// const jisoo = new Date(selectDay);
-// console.log(jisoo);
+// 한자리 수 두자리로 만들기
+const km = selectDay.split('.');
+console.log(km);
+if (km[1].length < 2) {
+  km[1] = '0' + km[1];
+  console.log(km);
+}
+if (km[2].length < 2) {
+  km[2] = '0' + km[2];
+  console.log(km);
+}
+const adt = km.join('');
+
+console.log(adt);
+renderTodo(todos, adt);

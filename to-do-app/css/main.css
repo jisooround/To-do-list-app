@@ -105,6 +105,9 @@ main .container .list .list-wrap .item {
   justify-content: space-between;
   padding-bottom: 10px;
 }
+main .container .list .list-wrap .item.none {
+  display: none;
+}
 main .container .list .list-wrap .item .content {
   padding-top: 13px;
   display: flex;

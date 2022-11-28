@@ -1,3 +1,6 @@
+// import renderTodo from "./renderTodo";
+// import getTodo from "./getCalendar";
+
 export default function selectDay(date, select) {
   let selectYear = date.getFullYear();
   let selectMonth = date.getMonth() + 1;
@@ -5,5 +8,7 @@ export default function selectDay(date, select) {
 
   // console.log(selectYear, selectMonth, Number(select.textContent));
   listDateEl.textContent = `${selectYear}.${selectMonth}.${Number(select.textContent)}`;
+  // getTodo(date);
+  // renderTodo(date);
   return selectYear, selectMonth, Number(select.textContent);
 }
