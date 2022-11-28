@@ -93,8 +93,6 @@ export default function renderCalendar(date, adt) {
       console.log('날짜 클릭')
       
       getTodo(date);
-
-      // return wjs;
     })
   };
 };

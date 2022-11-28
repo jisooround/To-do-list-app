@@ -12,8 +12,6 @@ const buttonEl = document.getElementById('todo-btn');
 const todoEl = inputEl.value;
 let todos = await getTodo(todoEl);
 
-// renderTodo(todos);
-// 최초 날짜 표시
 listDateEl.textContent = `${date.getFullYear()}.${date.getMonth()+1}.${date.getDate()}`;
 
 // todo 입력
@@ -40,7 +38,7 @@ buttonEl.addEventListener("click", async (event) => {
     const adt = km.join('');
 
     console.log(adt);
-    createTodo(todoEl, adt);
+    await createTodo(todoEl, adt);
 
     const todos = await getTodo(todoEl);
     renderTodo(todos, adt);
@@ -49,22 +47,6 @@ buttonEl.addEventListener("click", async (event) => {
 
 const selectDay = listDateEl.textContent;
 console.log(selectDay);
-
-// // 한자리 수 두자리로 만들기
-// const km = selectDay.split('.');
-// console.log(km);
-// if (km[1].length < 2) {
-//   km[1] = '0' + km[1];
-//   console.log(km);
-// }
-// if (km[2].length < 2) {
-//   km[2] = '0' + km[2];
-//   console.log(km);
-// }
-// const adt = km.join('');
-
-// console.log(adt);
-// renderTodo(todos, adt);
 
 // 한자리 수 두자리로 만들기
 const km = selectDay.split('.');

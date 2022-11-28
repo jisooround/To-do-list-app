@@ -31,16 +31,16 @@ export default function renderTodo(todos, adt, wjs) {
     delEl.addEventListener("click", async () => {
       await deleteTodo(id);
       const todos = await getTodo();
-      renderTodo(todos);
+      renderTodo(todos, adt, wjs);
     });
-
+  
+    // 표시된 날짜와 같은 날의 목록만 노출
     if (todos[i].order == adt || todos[i].order == wjs) {
       console.log('같다');
     } else {
       console.log('다르다');
       itemEl.classList.add('none');
     };
-
 
   };
 };
