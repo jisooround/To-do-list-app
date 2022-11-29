@@ -1,5 +1,5 @@
 export default async function createTodo(todoEl, changeToSix) {
-  console.log('createTodo'+changeToSix);
+  console.log('createTodo' + changeToSix);
   const res = await fetch('https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos', {
     method: 'POST',
     headers: {

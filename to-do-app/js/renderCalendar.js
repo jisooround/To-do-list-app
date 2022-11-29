@@ -2,12 +2,21 @@ import selectDay from "./selectDay.js";
 import getTodo from "./getTodo.js";
 import renderTodo from "./renderTodo.js";
 
-export default function renderCalendar(date, adt) {
+export default function renderCalendar(date, todos) {
   const yearEl = date.getFullYear();
   const monthEl = date.getMonth();
   let selectYear = date.getFullYear();
   let selectMonth = date.getMonth() + 1;
   let selectDate = document.querySelectorAll('.this');
+  let todosOrder = [];
+  // let orderArr = [];
+
+  // console.log(todos);
+  for(let i = 0; i < todos.length; i++){
+    todosOrder.push(todos[i].order); 
+  };
+  let orderArr = [...new Set(todosOrder)];
+  console.log(orderArr);
 
   // month 정보
   document.querySelector('.month').textContent = `${yearEl}. ${monthEl + 1}`;
@@ -53,8 +62,25 @@ export default function renderCalendar(date, adt) {
 
   document.querySelector('.dates').innerHTML = dates.join('');
 
-  // console.log(dates)
   selectDate = document.querySelectorAll('.this');
+
+  // id에 날짜 넣기
+  for (let i = 0; i < selectDate.length; i++) {
+    const dateId = `${date.getFullYear()}.${date.getMonth()+1}.${selectDate[i].innerText}`
+    const dateArr = dateId.split('.');
+    if (dateArr[1].length < 2) {
+      dateArr[1] = '0' + dateArr[1];
+    }
+    if (dateArr[2].length < 2) {
+      dateArr[2] = '0' + dateArr[2];
+    }
+    const changeToSix = dateArr.join('');
+    selectDate[i].id += changeToSix;
+
+    if(orderArr.includes(Number(selectDate[i].id))){
+      selectDate[i].classList.add('true');
+    }
+  }
 
   // 오늘 날짜 표시
   const today = new Date();
@@ -73,26 +99,25 @@ export default function renderCalendar(date, adt) {
     select.addEventListener("click", async () => {
       // 기존 코드
       const selectdate = selectDay(date, select);
-      const data = ([`${selectYear}`, `${selectMonth}`, `${selectdate}`]);
-      console.log(data);
+      const dateArr = ([`${selectYear}`, `${selectMonth}`, `${selectdate}`]);
 
       // 한자리 수 두자리로 만들기
-      if (data[1].length < 2) {
-        data[1] = '0' + data[1];
-        console.log(data);
+      if (dateArr[1].length < 2) {
+        dateArr[1] = '0' + dateArr[1];
+        console.log(dateArr);
       }
-      if (data[2].length < 2) {
-        data[2] = '0' + data[2];
-        console.log(data);
+      if (dateArr[2].length < 2) {
+        dateArr[2] = '0' + dateArr[2];
+        console.log(dateArr);
       }
-      const wjs = data.join('');
-      console.log(wjs);
+      const changeToSix = dateArr.join('');
+      console.log(changeToSix);
 
       const todos = await getTodo();
-      renderTodo(todos, wjs);
+      renderTodo(todos, changeToSix);
       console.log('날짜 클릭')
-      
-      getTodo(date);
+
+      getTodo(dateArr);
     })
   };
 };

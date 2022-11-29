@@ -1,9 +1,9 @@
 import renderCalendar from './renderCalendar'
 
-export default function getCalendar(date) {
+export default function getCalendar(date, todos) {
 // 최초 호출
   date = new Date();
-  renderCalendar(date);
+  renderCalendar(date, todos);
 
 // prev 버튼 클릭 이벤트
 const prevBtnEl = document.querySelector('.prev');
@@ -11,7 +11,7 @@ prevBtnEl.addEventListener("click", () => {
   date.setMonth(date.getMonth() - 1);
 
   // 화면에 출력
-  renderCalendar(date);
+  renderCalendar(date, todos);
 
   // 콘솔 확인
   // console.log(selectYear,selectMonth);
@@ -24,7 +24,7 @@ nextBtnEl.addEventListener("click", () => {
   date.setMonth(date.getMonth() + 1);
 
   // 화면에 출력
-  renderCalendar(date);
+  renderCalendar(date, todos);
 
   // 콘솔 확인
   // console.log(selectYear,selectMonth);
@@ -36,7 +36,7 @@ todayBtnEl.addEventListener("click", () => {
   date = new Date();
 
   // 화면에 출력
-  renderCalendar(date);
+  renderCalendar(date, todos);
 
   // 콘솔 확인
   // console.log(selectYear,selectMonth);

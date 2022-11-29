@@ -7,12 +7,14 @@
 }
 
 body {
-  height: 100%;
+  height: 100vh;
+  min-height: 940px;
+  min-height: 900px;
   background-color: #F5F5F5;
   display: flex;
+  flex-wrap: wrap;
 }
-
-main {
+body main {
   display: flex;
   justify-content: center;
   width: 40%;
@@ -20,23 +22,35 @@ main {
   background-color: #CE2424;
   overflow: hidden;
 }
-main .container .title {
+body main .container {
+  height: 100%;
+}
+body main .container .title {
   display: flex;
   justify-content: center;
 }
-main .container .title h1 {
+body main .container .title h1 {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   font-size: 100px;
   font-family: "Erica One", "Black Han Sans", cursive;
   color: #F5F5F5;
   margin-top: 90px;
 }
-main .container .write {
+body main .container .write {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   position: relative;
   margin-top: 20px;
   display: flex;
   align-items: center;
 }
-main .container .write .todo-input {
+body main .container .write .todo-input {
+  outline: none;
   width: 100%;
   height: 50px;
   border-radius: 0;
@@ -49,7 +63,7 @@ main .container .write .todo-input {
   font-family: "Black Han Sans", "Erica One", cursive;
   box-sizing: border-box;
 }
-main .container .write .todo-btn {
+body main .container .write .todo-btn {
   position: absolute;
   right: 8px;
   width: 100px;
@@ -62,7 +76,7 @@ main .container .write .todo-btn {
   background-color: #CE2424;
   cursor: pointer;
 }
-main .container .list {
+body main .container .list {
   width: 530px;
   height: 500px;
   margin-top: 10px;
@@ -74,7 +88,17 @@ main .container .list {
   position: relative;
   flex-wrap: wrap;
 }
-main .container .list .list-date {
+body main .container .list .loading {
+  mix-blend-mode: multiply;
+  position: absolute;
+  top: 180px;
+  width: 200px;
+  display: none;
+}
+body main .container .list .loading.show {
+  display: block;
+}
+body main .container .list .list-date {
   text-align: center;
   width: 90%;
   height: 60px;
@@ -84,7 +108,7 @@ main .container .list .list-date {
   font-family: "Erica One", "Black Han Sans", cursive;
   color: #CE2424;
 }
-main .container .list .list-wrap {
+body main .container .list .list-wrap {
   width: 90%;
   align-items: flex-start;
   height: auto;
@@ -96,7 +120,7 @@ main .container .list .list-wrap {
   flex-wrap: wrap;
   padding-bottom: 10px;
 }
-main .container .list .list-wrap .item {
+body main .container .list .list-wrap .item {
   width: 100%;
   height: 40px;
   border-bottom: 2px solid #CE2424;
@@ -105,15 +129,15 @@ main .container .list .list-wrap .item {
   justify-content: space-between;
   padding-bottom: 10px;
 }
-main .container .list .list-wrap .item.none {
+body main .container .list .list-wrap .item.none {
   display: none;
 }
-main .container .list .list-wrap .item .content {
+body main .container .list .list-wrap .item .content {
   padding-top: 13px;
   display: flex;
   align-items: center;
 }
-main .container .list .list-wrap .item .content [type=checkbox] {
+body main .container .list .list-wrap .item .content [type=checkbox] {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -123,10 +147,11 @@ main .container .list .list-wrap .item .content [type=checkbox] {
   height: 17px;
   transition: 0.3s ease-in-out;
 }
-main .container .list .list-wrap .item .content [type=checkbox]:checked {
+body main .container .list .list-wrap .item .content [type=checkbox]:checked {
   background-color: #CE2424;
 }
-main .container .list .list-wrap .item .content .todo {
+body main .container .list .list-wrap .item .content .todo {
+  outline: none;
   padding-top: 4px;
   padding-left: 10px;
   box-sizing: border-box;
@@ -134,7 +159,7 @@ main .container .list .list-wrap .item .content .todo {
   font-family: "Black Han Sans", "Erica One", cursive;
   color: #CE2424;
 }
-main .container .list .list-wrap .item .delete-btn {
+body main .container .list .list-wrap .item .delete-btn {
   box-sizing: border-box;
   width: auto;
   height: 20px;
@@ -144,12 +169,12 @@ main .container .list .list-wrap .item .delete-btn {
   text-align: right;
   cursor: pointer;
 }
-main .container .list .list-btn {
+body main .container .list .list-btn {
   position: absolute;
   left: 20px;
   bottom: 20px;
 }
-main .container .list .list-btn button {
+body main .container .list .list-btn button {
   border: none;
   background-color: transparent;
   color: #CE2424;
@@ -159,12 +184,12 @@ main .container .list .list-btn button {
   text-align: center;
   cursor: pointer;
 }
-main .container .list .complete {
+body main .container .list .complete {
   position: absolute;
   right: 10px;
   bottom: 20px;
 }
-main .container .list .complete p {
+body main .container .list .complete p {
   border: none;
   background-color: transparent;
   color: #CE2424;
@@ -174,11 +199,11 @@ main .container .list .complete p {
   text-align: center;
   cursor: pointer;
 }
-main .container .button {
+body main .container .button {
   display: flex;
   justify-content: center;
 }
-main .container .button button {
+body main .container .button button {
   border: none;
   background-color: transparent;
   color: #F5F5F5;
@@ -188,18 +213,17 @@ main .container .button button {
   padding: 0;
   cursor: pointer;
 }
-main .container .button button:hover {
+body main .container .button button:hover {
   color: rgb(0, 255, 85);
 }
-
-.calendar {
+body .calendar {
   height: 100%;
   width: 60%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.calendar .title {
+body .calendar .title {
   width: 100%;
   height: 210px;
   right: 0;
@@ -209,35 +233,35 @@ main .container .button button:hover {
   align-items: flex-start;
   justify-content: center;
 }
-.calendar .title h2 {
+body .calendar .title h2 {
   font-size: 100px;
   font-family: "Erica One", "Black Han Sans", cursive;
   color: #CE2424;
   margin-top: 90px;
 }
-.calendar .body {
+body .calendar .body {
   width: 665px;
-  height: 100%;
+  height: calc(100% - 210px);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
 }
-.calendar .body .container {
+body .calendar .body .container {
   margin-top: 90px;
   margin-bottom: 10px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
-.calendar .body .container .month-wrap {
+body .calendar .body .container .month-wrap {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-content: flex-start;
   flex-wrap: wrap;
 }
-.calendar .body .container .month-wrap .prev, .calendar .body .container .month-wrap .next {
+body .calendar .body .container .month-wrap .prev, body .calendar .body .container .month-wrap .next {
   width: 40px;
   height: 40px;
   border: none;
@@ -247,7 +271,7 @@ main .container .button button:hover {
   font-size: 16px;
   cursor: pointer;
 }
-.calendar .body .container .month-wrap .month {
+body .calendar .body .container .month-wrap .month {
   margin-top: -15px;
   text-align: center;
   width: auto;
@@ -255,20 +279,20 @@ main .container .button button:hover {
   color: #CE2424;
   font-size: 64px;
 }
-.calendar .body .container .month-wrap .prev {
+body .calendar .body .container .month-wrap .prev {
   left: 0;
   background-image: url("../images/Arrow.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
-.calendar .body .container .month-wrap .next {
+body .calendar .body .container .month-wrap .next {
   right: 0;
   background-image: url("../images/Arrow.svg");
   background-repeat: no-repeat;
   background-position: center;
   transform: scaleX(-1);
 }
-.calendar .body .container .today {
+body .calendar .body .container .today {
   display: flex;
   justify-content: flex-end;
   padding-top: 30px;
@@ -282,20 +306,20 @@ main .container .button button:hover {
   background-color: transparent;
   box-sizing: border-box;
 }
-.calendar .body .container .days-wrap {
+body .calendar .body .container .days-wrap {
   display: flex;
   flex-wrap: wrap;
   height: 480px;
   align-content: flex-start;
 }
-.calendar .body .container .days-wrap .days {
+body .calendar .body .container .days-wrap .days {
   display: flex;
   width: 665px;
   height: 40px;
   background-color: #CE2424;
   align-items: center;
 }
-.calendar .body .container .days-wrap .days .day {
+body .calendar .body .container .days-wrap .days .day {
   width: 95px;
   height: 100%;
   margin-top: 3px;
@@ -310,15 +334,16 @@ main .container .button button:hover {
       -ms-user-select: none;
           user-select: none;
 }
-.calendar .body .container .days-wrap .dates {
+body .calendar .body .container .days-wrap .dates {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.calendar .body .container .days-wrap .dates .date {
+body .calendar .body .container .days-wrap .dates .date {
   width: 95px;
   height: 70px;
   display: flex;
+  flex-wrap: wrap;
   padding-top: 12px;
   justify-content: center;
   box-sizing: border-box;
@@ -333,22 +358,29 @@ main .container .button button:hover {
       -ms-user-select: none;
           user-select: none;
 }
-.calendar .body .container .days-wrap .dates .date:nth-last-child(-n+7) {
+body .calendar .body .container .days-wrap .dates .date:nth-last-child(-n+7) {
   border-bottom: 2px solid #CE2424;
 }
-.calendar .body .container .days-wrap .dates .date:nth-child(-n+7) {
+body .calendar .body .container .days-wrap .dates .date:nth-child(-n+7) {
   border-top: none;
 }
-.calendar .body .container .days-wrap .dates .date:nth-child(7n) {
+body .calendar .body .container .days-wrap .dates .date:nth-child(7n) {
   border-right: none;
 }
-.calendar .body .container .days-wrap .dates .today {
+body .calendar .body .container .days-wrap .dates .true {
+  background-image: url("../images/true.png");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 40px;
+}
+body .calendar .body .container .days-wrap .dates .today {
   box-shadow: inset 0 0 20px 5px rgb(0, 255, 85);
 }
-.calendar .body .container .days-wrap .dates .other {
+body .calendar .body .container .days-wrap .dates .other {
   color: #c9c9c9;
 }
-.calendar .body .container .days-wrap .dates .this:hover {
+body .calendar .body .container .days-wrap .dates .this:hover {
   box-shadow: inset 0 0 20px 5px rgb(0, 255, 85);
 }
 
