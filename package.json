@@ -1,23 +1,15 @@
 {
-  "name": "to-do-list-app",
-  "version": "1.0.0",
-  "description": "✔️ 바닐라 자바스크립트 To Do List App",
-  "main": "index.js",
+  "name": "vite-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jisooround/To-do-list-app.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jisooround/To-do-list-app/issues"
-  },
-  "homepage": "https://github.com/jisooround/To-do-list-app#readme",
   "devDependencies": {
-    "vite": "^3.2.4"
+    "sass": "^1.56.1",
+    "vite": "^3.2.3"
   }
 }
