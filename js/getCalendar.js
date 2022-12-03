@@ -5,7 +5,6 @@ export default function getCalendar(date, todos) {
     date = new Date();
   }
   if(/\d{4}\.\d{1,}\.\d{1,}/.test(date)){
-    console.log('date!!!', date)
     date = new Date(date);
   }
   renderCalendar(date, todos);

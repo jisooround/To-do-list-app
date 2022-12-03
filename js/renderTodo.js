@@ -1,11 +1,8 @@
-import deleteTodo from "./deleteTodo";
-import editTodo from "./editTodo";
-import getTodo from "./getTodo";
-import getCalendar from "./getCalendar";
+import { getTodo, editTodo, deleteTodo } from "./todoAPI.js";
 import { state } from "../store/index.js"
+import getCalendar from "./getCalendar";
 
 export default function renderTodo(todos, resDate) {
-  const date = new Date();
   const listEl = document.getElementById('list-wrap');
   listEl.innerHTML = '';
 

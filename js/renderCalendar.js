@@ -1,6 +1,7 @@
 import selectDay from "./selectDay.js";
-import getTodo from "./getTodo.js";
 import renderTodo from "./renderTodo.js";
+import { getTodo } from "./todoAPI.js";
+import convertDate from "./convertDate.js";
 
 export default function renderCalendar(date, todos) {
   const yearEl = date.getFullYear();
@@ -66,15 +67,10 @@ export default function renderCalendar(date, todos) {
 
   // id에 날짜 넣기
   for (let i = 0; i < selectDate.length; i++) {
-    const dateId = `${date.getFullYear()}.${date.getMonth()+1}.${selectDate[i].innerText}`
-    const dateArr = dateId.split('.');
-    if (dateArr[1].length < 2) {
-      dateArr[1] = '0' + dateArr[1];
-    }
-    if (dateArr[2].length < 2) {
-      dateArr[2] = '0' + dateArr[2];
-    }
-    const resDate = dateArr.join('');
+    const dateId = `${date.getFullYear()}.${date.getMonth()+1}.${selectDate[i].innerText}`;
+
+    // 한자리 수 두자리로 만들기
+    const resDate = convertDate(dateId);
     selectDate[i].id += resDate;
 
     if (orderArr.includes(Number(selectDate[i].id))) {
@@ -87,7 +83,6 @@ export default function renderCalendar(date, todos) {
   if (monthEl === today.getMonth() && yearEl === today.getFullYear()) {
     for (let date of document.querySelectorAll('.this')) {
       if (Number(date.innerText) === today.getDate()) {
-        console.log(typeof date.innerText)
         date.classList.add('today');
         break;
       }
@@ -98,27 +93,18 @@ export default function renderCalendar(date, todos) {
   for (let i = 0; i < selectDate.length; i++) {
     const select = selectDate[i];
     select.addEventListener("click", async () => {
+
       // 기존 코드
-      
       const sDate = selectDay(date, select);
       const dateArr = ([`${selectYear}`, `${selectMonth}`, `${sDate}`]);
-
+      
       // 한자리 수 두자리로 만들기
-      if (dateArr[1].length < 2) {
-        dateArr[1] = '0' + dateArr[1];
-      }
-      if (dateArr[2].length < 2) {
-        dateArr[2] = '0' + dateArr[2];
-      }
-      const resDate = dateArr.join('');
-      const todos = await getTodo();
+      const selectDate = `${selectYear}.${selectMonth}.${sDate}`;
+      const resDate = convertDate(selectDate);
+      
+      // 
+      const todos = await getTodo(dateArr);
       renderTodo(todos, resDate);
-
-      getTodo(dateArr);
-
     })
   };
-
-
-
 };
