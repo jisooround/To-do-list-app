@@ -94,12 +94,10 @@ export default function renderCalendar(date, todos) {
     const select = selectDate[i];
     select.addEventListener("click", async () => {
 
-      // 기존 코드
-      const sDate = selectDay(date, select);
-      const dateArr = ([`${selectYear}`, `${selectMonth}`, `${sDate}`]);
-      
+      const selectDate = selectDay(date, select);
+      const dateArr = selectDate.split('.');
+
       // 한자리 수 두자리로 만들기
-      const selectDate = `${selectYear}.${selectMonth}.${sDate}`;
       const resDate = convertDate(selectDate);
       
       // 
