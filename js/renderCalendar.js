@@ -100,7 +100,7 @@ export default function renderCalendar(date, todos) {
       // 한자리 수 두자리로 만들기
       const resDate = convertDate(selectDate);
       
-      // 
+      // 랜더
       const todos = await getTodo(dateArr);
       renderTodo(todos, resDate);
     })
