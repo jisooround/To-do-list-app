@@ -6,8 +6,8 @@ import convertDate from "./convertDate.js";
 export default function renderCalendar(date, todos) {
   const yearEl = date.getFullYear();
   const monthEl = date.getMonth();
-  let selectYear = date.getFullYear();
-  let selectMonth = date.getMonth() + 1;
+  // let selectYear = date.getFullYear();
+  // let selectMonth = date.getMonth() + 1;
   let selectDate = document.querySelectorAll('.this');
   
   // order 배열 만들기
@@ -62,7 +62,6 @@ export default function renderCalendar(date, todos) {
   })
 
   document.querySelector('.dates').innerHTML = dates.join('');
-
   selectDate = document.querySelectorAll('.this');
 
   // id에 날짜 넣기
@@ -80,12 +79,10 @@ export default function renderCalendar(date, todos) {
 
   // 오늘 날짜 표시
   const today = new Date();
-  if (monthEl === today.getMonth() && yearEl === today.getFullYear()) {
-    for (let date of document.querySelectorAll('.this')) {
-      if (Number(date.innerText) === today.getDate()) {
-        date.classList.add('today');
-        break;
-      }
+  for (let date of document.querySelectorAll('.this')) {
+    if (Number(date.innerText) === today.getDate() && monthEl === today.getMonth() && yearEl === today.getFullYear()) {
+      date.classList.add('today');
+      break;
     }
   }
 
@@ -93,7 +90,6 @@ export default function renderCalendar(date, todos) {
   for (let i = 0; i < selectDate.length; i++) {
     const select = selectDate[i];
     select.addEventListener("click", async () => {
-
       const selectDate = selectDay(date, select);
       const dateArr = selectDate.split('.');
 
