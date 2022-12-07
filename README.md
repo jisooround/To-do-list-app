@@ -1,7 +1,7 @@
 # 📆 REST API를 활용한 To Do App.
 
 ## 결과물
-📆 [To do app 보기](https://mudi-to-do-app.netlify.app/)
+📆 [To do app 보기](https://mudi-todo.netlify.app/)
 
 ##  작업 기간
 2022년 11월 21일 ~ 12월 03일
