@@ -1,0 +1,386 @@
+::-moz-selection {
+  background-color: rgb(0, 255, 85);
+}
+
+::selection {
+  background-color: rgb(0, 255, 85);
+}
+
+body {
+  height: 100vh;
+  min-height: 940px;
+  min-height: 900px;
+  background-color: #F5F5F5;
+  display: flex;
+  flex-wrap: wrap;
+}
+body main {
+  display: flex;
+  justify-content: center;
+  width: 40%;
+  height: auto;
+  background-color: #CE2424;
+  overflow: hidden;
+}
+body main .container {
+  height: 100%;
+}
+body main .container .title {
+  display: flex;
+  justify-content: center;
+}
+body main .container .title h1 {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 100px;
+  font-family: "Erica One", "Black Han Sans", cursive;
+  color: #F5F5F5;
+  margin-top: 90px;
+}
+body main .container .write {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+body main .container .write .todo-input {
+  outline: none;
+  width: 100%;
+  height: 50px;
+  border-radius: 0;
+  padding-top: 7px;
+  border: none;
+  padding-left: 20px;
+  background-color: #F5F5F5;
+  color: #CE2424;
+  font-size: 23px;
+  font-family: "Black Han Sans", "Erica One", cursive;
+  box-sizing: border-box;
+}
+body main .container .write .todo-btn {
+  position: absolute;
+  right: 8px;
+  width: 100px;
+  height: 40px;
+  border: none;
+  color: #F5F5F5;
+  letter-spacing: 1px;
+  font-size: 18px;
+  font-family: "Erica One", "Black Han Sans", cursive;
+  background-color: #CE2424;
+  cursor: pointer;
+}
+body main .container .list {
+  width: 530px;
+  height: 500px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  background-color: #F5F5F5;
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  position: relative;
+  flex-wrap: wrap;
+}
+body main .container .list .loading {
+  mix-blend-mode: multiply;
+  position: absolute;
+  top: 180px;
+  width: 200px;
+  display: none;
+}
+body main .container .list .loading.show {
+  display: block;
+}
+body main .container .list .list-date {
+  text-align: center;
+  width: 90%;
+  height: 60px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 55px;
+  font-family: "Erica One", "Black Han Sans", cursive;
+  color: #CE2424;
+}
+body main .container .list .list-wrap {
+  width: 90%;
+  align-items: flex-start;
+  height: auto;
+  max-height: 320px;
+  padding: 15px;
+  box-sizing: border-box;
+  overflow-x: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+}
+body main .container .list .list-wrap .item {
+  width: 100%;
+  height: 40px;
+  border-bottom: 2px solid #CE2424;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+body main .container .list .list-wrap .item.none {
+  display: none;
+}
+body main .container .list .list-wrap .item .content {
+  padding-top: 13px;
+  display: flex;
+  align-items: center;
+}
+body main .container .list .list-wrap .item .content [type=checkbox] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 2.5px solid #CE2424;
+  border-radius: 50%;
+  width: 17px;
+  height: 17px;
+  transition: 0.3s ease-in-out;
+}
+body main .container .list .list-wrap .item .content [type=checkbox]:checked {
+  background-color: #CE2424;
+}
+body main .container .list .list-wrap .item .content .todo {
+  outline: none;
+  padding-top: 4px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  font-size: 20px;
+  font-family: "Black Han Sans", "Erica One", cursive;
+  color: #CE2424;
+}
+body main .container .list .list-wrap .item .delete-btn {
+  box-sizing: border-box;
+  width: auto;
+  height: 20px;
+  font-family: "Erica One", "Black Han Sans", cursive;
+  color: #CE2424;
+  font-size: 18px;
+  text-align: right;
+  cursor: pointer;
+}
+body main .container .list .list-btn {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+body main .container .list .list-btn button {
+  border: none;
+  background-color: transparent;
+  color: #CE2424;
+  font-family: "Erica One", "Black Han Sans", cursive;
+  font-size: 30px;
+  padding: 0 20px;
+  text-align: center;
+  cursor: pointer;
+}
+body main .container .list .complete {
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+}
+body main .container .list .complete p {
+  border: none;
+  background-color: transparent;
+  color: #CE2424;
+  font-family: "Erica One", "Black Han Sans", cursive;
+  font-size: 40px;
+  padding: 0 20px;
+  text-align: center;
+  cursor: pointer;
+}
+body main .container .button {
+  display: flex;
+  justify-content: center;
+}
+body main .container .button button {
+  border: none;
+  background-color: transparent;
+  color: #F5F5F5;
+  font-family: "Erica One", "Black Han Sans", cursive;
+  font-size: 75px;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+}
+body main .container .button button:hover {
+  color: rgb(0, 255, 85);
+}
+body .calendar {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+body .calendar .title {
+  width: 100%;
+  height: 210px;
+  right: 0;
+  background-color: #F5F5F5;
+  box-shadow: 0 10px 30px 0 #CE2424;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+body .calendar .title h2 {
+  font-size: 100px;
+  font-family: "Erica One", "Black Han Sans", cursive;
+  color: #CE2424;
+  margin-top: 90px;
+}
+body .calendar .body {
+  width: 665px;
+  height: calc(100% - 210px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+}
+body .calendar .body .container {
+  margin-top: 90px;
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+body .calendar .body .container .month-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+body .calendar .body .container .month-wrap .prev,
+body .calendar .body .container .month-wrap .next {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #CE2424;
+  color: #F5F5F5;
+  font-family: "Black Han Sans", "Erica One", cursive;
+  font-size: 16px;
+  cursor: pointer;
+}
+body .calendar .body .container .month-wrap .month {
+  margin-top: -15px;
+  text-align: center;
+  width: auto;
+  font-family: "Erica One", "Black Han Sans", cursive;
+  color: #CE2424;
+  font-size: 64px;
+}
+body .calendar .body .container .month-wrap .prev {
+  left: 0;
+  background-image: url("../images/Arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+body .calendar .body .container .month-wrap .next {
+  right: 0;
+  background-image: url("../images/Arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: scaleX(-1);
+}
+body .calendar .body .container .today {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  color: #CE2424;
+  font-family: "Black Han Sans", "Erica One", cursive;
+  font-size: 17px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+body .calendar .body .container .days-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  height: 480px;
+  align-content: flex-start;
+}
+body .calendar .body .container .days-wrap .days {
+  display: flex;
+  width: 665px;
+  height: 40px;
+  background-color: #CE2424;
+  align-items: center;
+}
+body .calendar .body .container .days-wrap .days .day {
+  width: 95px;
+  height: 100%;
+  margin-top: 3px;
+  font-family: "Black Han Sans", "Erica One", cursive;
+  font-size: 18px;
+  color: #F5F5F5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+body .calendar .body .container .days-wrap .dates {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+body .calendar .body .container .days-wrap .dates .date {
+  width: 95px;
+  height: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  justify-content: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: "Black Han Sans", "Erica One", cursive;
+  font-size: 19px;
+  color: #CE2424;
+  border-top: 2px solid #CE2424;
+  border-right: 2px solid #CE2424;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+body .calendar .body .container .days-wrap .dates .date:nth-last-child(-n+7) {
+  border-bottom: 2px solid #CE2424;
+}
+body .calendar .body .container .days-wrap .dates .date:nth-child(-n+7) {
+  border-top: none;
+}
+body .calendar .body .container .days-wrap .dates .date:nth-child(7n) {
+  border-right: none;
+}
+body .calendar .body .container .days-wrap .dates .true {
+  background-image: url("../images/true.png");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 40px;
+}
+body .calendar .body .container .days-wrap .dates .today {
+  box-shadow: inset 0 0 20px 5px rgb(0, 255, 85);
+}
+body .calendar .body .container .days-wrap .dates .other {
+  color: #c9c9c9;
+}
+body .calendar .body .container .days-wrap .dates .this:hover {
+  box-shadow: inset 0 0 20px 5px rgb(0, 255, 85);
+}/*# sourceMappingURL=main.css.map */
